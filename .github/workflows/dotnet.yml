@@ -33,8 +33,8 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: BuildPackage
-      run: dotnet pack --configuration Release -o pkgDir -p:Version=1.0.0.${{ github.run_id }}
+      run: dotnet pack --configuration Release -o pkgDir -p:Version=1.0.0.${{ github.run_number }}
 
     - name: PushPackage
-      run: dotnet nuget push "GaPackage/bin/Release/GaPackage.1.0.0.${{ github.run_id }}.nupkg" --source "github" -k ${{ secrets.GITHUB_TOKEN }}
+      run: dotnet nuget push "GaPackage/bin/Release/GaPackage.1.0.0.${{ github.run_number }}.nupkg" --source "github" -k ${{ secrets.GITHUB_TOKEN }}
       
